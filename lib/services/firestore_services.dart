@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:job_tracking_app/models/interview_questions.dart';
 import 'package:job_tracking_app/models/job_model.dart';
 import 'package:job_tracking_app/models/resumes_model.dart';
 import 'package:job_tracking_app/utils/extensions/another_flushbar.dart';
@@ -163,6 +164,32 @@ class FirestoreServices {
         context,
       );
       throw Exception('Failed to upload resume PDF to Cloudinary');
+    }
+  }
+
+  Future<void> addInterviewQuestion(
+    InterviewQuestion model,
+    BuildContext context,
+  ) async {
+    try {
+      await _firebaseFirestore
+          .collection("interview_questions")
+          .doc(model.id)
+          .set(model.toMap());
+      FlushBarMessages.successMessageFlushBar(
+        "Interview Question added successfully",
+        // ignore: use_build_context_synchronously
+        context,
+      );
+    } catch (e) {
+      FlushBarMessages.errorMessageFlushBar(
+        "Error while uploading the question is ${e.toString()}",
+        // ignore: use_build_context_synchronously
+        context,
+      );
+      if (kDebugMode) {
+        print("Error while uploading the question is ${e.toString()}");
+      }
     }
   }
 }

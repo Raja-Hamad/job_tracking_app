@@ -5,6 +5,7 @@ import 'package:job_tracking_app/utils/extensions/app_colors.dart';
 import 'package:job_tracking_app/views/edit_job_details_view.dart';
 import 'package:job_tracking_app/widgets/submit_button_widget.dart';
 
+// ignore: must_be_immutable
 class JobDetailView extends StatefulWidget {
   JobModel model;
   JobDetailView({super.key, required this.model});

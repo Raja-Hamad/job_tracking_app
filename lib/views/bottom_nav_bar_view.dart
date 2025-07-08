@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:job_tracking_app/utils/extensions/app_colors.dart';
 import 'package:job_tracking_app/views/all_resumes.dart';
 import 'package:job_tracking_app/views/dashboard_view.dart';
+import 'package:job_tracking_app/views/interview_questions.dart';
 import 'package:job_tracking_app/views/profile_view.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -15,13 +15,12 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
- 
 
   List<Widget> screens = [
     DashboardView(),
     AllResumes(),
+    InterviewQuestions(),
     ProfileView(),
- 
   ];
 
   int _currentIndex = 0;
@@ -39,14 +38,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
         selectedLabelStyle: GoogleFonts.poppins(color: Colors.white),
         unselectedLabelStyle: GoogleFonts.poppins(color: Colors.white),
         items: [
-       
-          BottomNavigationBarItem(
-            icon:Icon(Icons.home),
-            label: "Home",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
             icon: Icon(Icons.document_scanner),
             label: "Resume",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.question_answer),
+            label: "Guide",
           ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
@@ -58,6 +57,4 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
     );
   }
-
-
 }
